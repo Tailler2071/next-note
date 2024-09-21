@@ -29,5 +29,14 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
+## Структура проекта
+```
+└── components/
+    └── ui (Базовые компоненты)
+    └── shared (Общие компоненты)
+```
+
 ## Библиотеки
-[shadcn](https://ui.shadcn.com/) 
+[shadcn](https://ui.shadcn.com/) -  
+[tailwindcss](https://tailwindcss.ru/) -   
+[lucide](https://lucide.dev/) -
