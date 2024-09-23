@@ -5,7 +5,7 @@ import { AdapterUser } from '@auth/core/adapters';
 import { JWT } from 'next-auth/jwt'; // Это нужный import
 
 // Данные профиля приходящие от Yandex
-interface CustomYandexProfileI {
+interface CustomYandexProfileI extends Profile {
   id?: string | null;
   login?: string | null;
   client_id?: string | null;
@@ -22,19 +22,17 @@ interface CustomYandexProfileI {
 }
 
 declare module 'next-auth' {
-  interface Profile extends CustomYandexProfileI {}
-
   // Обязательное расширение Session
   // eslint-disable-next-line
   interface Session {
-    profile: Profile | undefined;
+    profile: CustomYandexProfileI | Profile | undefined;
   }
 }
 
 declare module 'next-auth/jwt' {
   interface JWT {
     user: User | AdapterUser;
-    profile: Profile | undefined;
+    profile: CustomYandexProfileI | Profile | undefined;
   }
 }
 
