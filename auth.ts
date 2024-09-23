@@ -1,11 +1,8 @@
-import NextAuth, { Profile, User } from 'next-auth';
+import NextAuth, { Profile } from 'next-auth';
 import Yandex from '@auth/core/providers/yandex';
-import { AdapterUser } from '@auth/core/adapters';
-// eslint-disable-next-line
-import { JWT } from 'next-auth/jwt'; // Это нужный import
 
-// Данные профиля приходящие от Yandex
-interface CustomYandexProfileI extends Profile {
+// Данные профиля (profile) приходящие от Yandex
+export interface CustomYandexProfileI extends Profile {
   id?: string | null;
   login?: string | null;
   client_id?: string | null;
@@ -19,21 +16,6 @@ interface CustomYandexProfileI extends Profile {
   default_avatar_id?: string | null;
   is_avatar_empty?: boolean;
   psuid?: string | null;
-}
-
-declare module 'next-auth' {
-  // Обязательное расширение Session
-  // eslint-disable-next-line
-  interface Session {
-    profile: CustomYandexProfileI | Profile | undefined;
-  }
-}
-
-declare module 'next-auth/jwt' {
-  interface JWT {
-    user: User | AdapterUser;
-    profile: CustomYandexProfileI | Profile | undefined;
-  }
 }
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
