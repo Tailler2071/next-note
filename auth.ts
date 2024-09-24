@@ -20,6 +20,9 @@ export interface CustomYandexProfileI extends Profile {
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Yandex],
+  pages: {
+    signIn: '/login',
+  },
   callbacks: {
     jwt({ token, user, profile }) {
       if (user) {
@@ -38,10 +41,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       session.user.name = token.user.name;
       session.user.image = token.user.image;
 
-      // Добовляем профиль (данные профиля) в session.profile
+      // Добавляем профиль (данные профиля) в session.profile
       session.profile = token.profile;
 
       return session;
     },
+    authorized: async({ auth }) => {
+      return !!auth;
+    }
   },
 });
