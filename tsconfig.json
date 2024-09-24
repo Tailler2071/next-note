@@ -22,9 +22,10 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      // Root Directory
+      "@@/*": ["./*"],
+      // Src Directory
+      "@/*": ["./src/*"]
     }
   },
   "include": [

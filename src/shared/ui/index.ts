@@ -1,4 +1,4 @@
-export { Input } from "./Input/Input";
-export { Button } from "./Button/Button";
-export { Separator } from "./Separator/Separator";
-export { MainLayout } from "./MainLayout/MainLayout";
+export * from './Input/Input';
+export * from './Button/Button';
+export * from './Form/Form';
+export * from './Label/Label';
