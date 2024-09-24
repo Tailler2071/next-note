@@ -14,6 +14,8 @@ import {
   FormMessage,
   Button,
 } from '@/shared/ui';
+import { signIn } from 'next-auth/react';
+import Image from 'next/image';
 
 export default function LoginForm() {
   // 1. Define your form.
@@ -81,10 +83,26 @@ export default function LoginForm() {
 
         {/* Send data button */}
         <Button
-          className={`mt-10`}
+          className={`mt-8`}
           type='submit'
         >
           Sign in
+        </Button>
+
+        {/* Sign in with Yandex button */}
+        <Button
+          className={`w-fit flex gap-4 mx-auto font-bold px-5 py-5`}
+          type='button'
+          onClick={() => signIn('yandex')}
+        >
+          Sign in with Yandex
+          <Image
+            width={24}
+            height={24}
+            loading={'lazy'}
+            src='https://authjs.dev/img/providers/yandex.svg'
+            alt='Y'
+          />
         </Button>
       </form>
     </Form>
