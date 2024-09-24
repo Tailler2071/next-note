@@ -1,4 +1,7 @@
+'use client';
+
 import { FC } from 'react';
+import { signOut } from 'next-auth/react';
 import { cn } from '@/shared/lib';
 import { Button } from '@/shared/ui';
 import Logo from '@/shared/assets/icons/logo.svg';
@@ -16,7 +19,15 @@ export const Header: FC<HeaderProps> = ({ className }) => {
           <div className='text-xl font-medium'>Next Note</div>
         </div>
 
-        <Button variant='default'>Войти</Button>
+        <div className='flex gap-6'>
+          <Button variant='default'>Войти</Button>
+          <Button
+            variant='default'
+            onClick={() => signOut()}
+          >
+            Выйти
+          </Button>
+        </div>
       </div>
     </header>
   );
