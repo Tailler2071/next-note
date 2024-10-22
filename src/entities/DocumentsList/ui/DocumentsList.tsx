@@ -1,11 +1,10 @@
 'use client';
 
-import { DocumentType } from '@/shared/types/documentTypes';
 import Link from 'next/link';
+import { useDocumentsStore } from '../model/documentsStore';
 
 export const DocumentsList = () => {
-  // вместо этого будет получение документов либо с сервера, либо из store
-  const documents: DocumentType[] = JSON.parse(localStorage.getItem('documents') || '[]');
+  const documents = useDocumentsStore((state) => state.documents);
 
   return (
     <ul>
